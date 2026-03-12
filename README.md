@@ -1,30 +1,33 @@
+HEAD
+
 # ⚡ EventHub — AI-Powered College Event Management System
 
 A full-stack platform for college societies to manage events and students to discover & register, powered by **Llama 3 AI**, **Socket.io real-time notifications**, and **JWT-based role authentication**.
 
 ## 🏗️ Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React.js, React Router v6, Socket.io Client |
-| Backend | Node.js, Express.js |
-| Database | MongoDB Atlas (Mongoose ODM) |
-| AI Engine | Llama 3 via Ollama |
-| Real-time | Socket.io |
-| Auth | JWT (JSON Web Tokens) |
-| Styling | Custom CSS with CSS Variables |
+| Layer     | Technology                                  |
+| --------- | ------------------------------------------- |
+| Frontend  | React.js, React Router v6, Socket.io Client |
+| Backend   | Node.js, Express.js                         |
+| Database  | MongoDB Atlas (Mongoose ODM)                |
+| AI Engine | Llama 3 via Ollama                          |
+| Real-time | Socket.io                                   |
+| Auth      | JWT (JSON Web Tokens)                       |
+| Styling   | Custom CSS with CSS Variables               |
 
 ## 👥 User Roles
 
-| Role | Capabilities |
-|------|-------------|
-| **Admin** | System overview, manage all events & societies |
-| **Society** | Create/edit/delete events, view registrations, AI description generator |
+| Role        | Capabilities                                                                              |
+| ----------- | ----------------------------------------------------------------------------------------- |
+| **Admin**   | System overview, manage all events & societies                                            |
+| **Society** | Create/edit/delete events, view registrations, AI description generator                   |
 | **Student** | Browse events, register, AI-powered personalized recommendations, real-time notifications |
 
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - MongoDB Atlas account (or local MongoDB)
 - Ollama with Llama 3 (optional — fallback AI works without it)
@@ -46,6 +49,7 @@ npm install
 ### 2. Configure Environment
 
 Edit `backend/.env`:
+
 ```env
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/college-events
 JWT_SECRET=your_secure_random_secret_here
@@ -61,6 +65,7 @@ node seed.js
 ```
 
 Demo accounts created:
+
 - **Student:** `student@demo.com` / `demo123`
 - **Society:** `society@demo.com` / `demo123`
 - **Admin:** `admin@demo.com` / `demo123`
@@ -83,6 +88,7 @@ API runs at: **http://localhost:5000**
 ## 🤖 AI Features (Llama 3)
 
 ### Setup Ollama (Optional)
+
 ```bash
 # Install Ollama
 curl -fsSL https://ollama.com/install.sh | sh
@@ -97,6 +103,7 @@ ollama serve
 > **Note:** If Ollama is not running, the system falls back to keyword-based matching. All other features work normally.
 
 ### AI Capabilities
+
 - **Personalized Event Recommendations** — Analyzes student interests to rank events by relevance
 - **AI Event Description Generator** — Societies can generate compelling event descriptions
 - **EveBot Chatbot** — In-app AI assistant for students to find events and get help
@@ -133,48 +140,52 @@ college-event-system/
 ## 🔌 API Endpoints
 
 ### Auth
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/login` | Login |
-| GET | `/api/auth/me` | Get current user |
-| PUT | `/api/auth/profile` | Update profile |
+
+| Method | Endpoint             | Description       |
+| ------ | -------------------- | ----------------- |
+| POST   | `/api/auth/register` | Register new user |
+| POST   | `/api/auth/login`    | Login             |
+| GET    | `/api/auth/me`       | Get current user  |
+| PUT    | `/api/auth/profile`  | Update profile    |
 
 ### Events
-| Method | Endpoint | Access |
-|--------|----------|--------|
-| GET | `/api/events` | Public |
-| GET | `/api/events/:id` | Public |
-| POST | `/api/events` | Society/Admin |
-| PUT | `/api/events/:id` | Organizer/Admin |
-| DELETE | `/api/events/:id` | Organizer/Admin |
-| GET | `/api/events/my-events` | Society |
+
+| Method | Endpoint                | Access          |
+| ------ | ----------------------- | --------------- |
+| GET    | `/api/events`           | Public          |
+| GET    | `/api/events/:id`       | Public          |
+| POST   | `/api/events`           | Society/Admin   |
+| PUT    | `/api/events/:id`       | Organizer/Admin |
+| DELETE | `/api/events/:id`       | Organizer/Admin |
+| GET    | `/api/events/my-events` | Society         |
 
 ### Registrations
-| Method | Endpoint | Access |
-|--------|----------|--------|
-| POST | `/api/registrations/event/:id` | Student |
-| DELETE | `/api/registrations/event/:id` | Student |
-| GET | `/api/registrations/my` | Student |
-| GET | `/api/registrations/event/:id` | Society/Admin |
+
+| Method | Endpoint                       | Access        |
+| ------ | ------------------------------ | ------------- |
+| POST   | `/api/registrations/event/:id` | Student       |
+| DELETE | `/api/registrations/event/:id` | Student       |
+| GET    | `/api/registrations/my`        | Student       |
+| GET    | `/api/registrations/event/:id` | Society/Admin |
 
 ### AI
-| Method | Endpoint | Access |
-|--------|----------|--------|
-| GET | `/api/ai/recommendations` | Student |
-| POST | `/api/ai/generate-description` | Society |
-| POST | `/api/ai/chat` | All |
-| GET | `/api/ai/analyze/:eventId` | Society/Admin |
+
+| Method | Endpoint                       | Access        |
+| ------ | ------------------------------ | ------------- |
+| GET    | `/api/ai/recommendations`      | Student       |
+| POST   | `/api/ai/generate-description` | Society       |
+| POST   | `/api/ai/chat`                 | All           |
+| GET    | `/api/ai/analyze/:eventId`     | Society/Admin |
 
 ## 📡 Socket.io Events
 
-| Event | Direction | Description |
-|-------|-----------|-------------|
-| `new_notification` | Server → Client | Real-time push notification |
-| `event_created` | Server → All | New event broadcast |
-| `event_updated` | Server → All | Event update broadcast |
-| `registration_update` | Server → Event Room | Live registration count |
-| `waitlist_promoted` | Server → Student | Waitlist spot opened |
+| Event                 | Direction           | Description                 |
+| --------------------- | ------------------- | --------------------------- |
+| `new_notification`    | Server → Client     | Real-time push notification |
+| `event_created`       | Server → All        | New event broadcast         |
+| `event_updated`       | Server → All        | Event update broadcast      |
+| `registration_update` | Server → Event Room | Live registration count     |
+| `waitlist_promoted`   | Server → Student    | Waitlist spot opened        |
 
 ## 🌟 Key Features
 
@@ -192,3 +203,7 @@ college-event-system/
 - 500+ student registrations
 - 80% reduction in missed event instances
 - 40% improvement in event registration rate
+
+# College-event-system
+
+AI-powered college event management system built with React.js, Node.js, Express.js, and MongoDB. Uses Llama 3 for personalized event recommendations and Socket.io for real-time notifications, enabling societies to manage events and students to discover and register easily.

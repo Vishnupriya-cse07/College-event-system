@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #6C63FF;
+  --primary-dark: #5A52E0;
+  --secondary: #FF6584;
+  --accent: #43D9AD;
+  --bg: #0F0F1A;
+  --bg2: #171727;
+  --bg3: #1E1E35;
+  --card: #1A1A2E;
+  --border: rgba(108,99,255,0.2);
+  --text: #E8E8F0;
+  --text2: #9999BB;
+  --success: #43D9AD;
+  --warning: #FFB547;
+  --error: #FF6584;
+  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(108,99,255,0.4); }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.btn-danger { background: var(--error); color: white; }
+.btn-danger:hover { opacity: 0.85; }
+.btn-success { background: var(--success); color: #0F0F1A; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-technical { background: rgba(108,99,255,0.2); color: var(--primary); }
+.badge-cultural { background: rgba(255,101,132,0.2); color: var(--secondary); }
+.badge-sports { background: rgba(67,217,173,0.2); color: var(--accent); }
+.badge-academic { background: rgba(255,181,71,0.2); color: var(--warning); }
+.badge-workshop { background: rgba(108,99,255,0.15); color: #A78BFA; }
+.badge-hackathon { background: rgba(255,101,132,0.15); color: #FB7185; }
+.badge-seminar { background: rgba(67,217,173,0.15); color: #6EE7B7; }
+.badge-other { background: rgba(153,153,187,0.2); color: var(--text2); }
+
+input, textarea, select {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--primary); }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group label { font-size: 0.85rem; color: var(--text2); font-weight: 500; }
+
+.page-container { min-height: 100vh; padding: 24px; max-width: 1400px; margin: 0 auto; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width: 1200px) { .grid-4 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--text2);
+  font-size: 1.1rem;
+}
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text2);
+}
+.empty-state h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--text); }

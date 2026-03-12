@@ -1,4 +1,4 @@
-HEAD
+
 
 # ⚡ EventHub — AI-Powered College Event Management System
 

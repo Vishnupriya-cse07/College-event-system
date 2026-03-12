@@ -82,9 +82,6 @@ cd frontend
 npm start
 ```
 
-App runs at: **http://localhost:3000**
-API runs at: **http://localhost:5000**
-
 ## 🤖 AI Features (Llama 3)
 
 ### Setup Ollama (Optional)

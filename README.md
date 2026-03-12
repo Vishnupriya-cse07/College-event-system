@@ -107,8 +107,6 @@ cd frontend
 npm start
 ```
 
-Visit **http://localhost:3000**
-
 ---
 
 ## 🤖 AI Features (Llama 3)
